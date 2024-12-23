@@ -8,7 +8,7 @@ type Props = Readonly<{
 export default function InfoBoard({ children, title }: Props) {
     return (
         <>
-            <div className="rounded-md bg-slate-400 p-2 pt-5 relative">
+            <div className="rounded-md bg-slate-400 p-2 pt-5 relative mt-4">
                 <header
                     className="
                             absolute bg-red-500 p-1 rounded-md text-nowrap
