@@ -59,7 +59,7 @@ export default function App() {
                         <IconLink
                             src="/icons/tiktok.svg"
                             label="art"
-                            href="/"
+                            href="/art"
                         />
                     </div>
                 </div>
