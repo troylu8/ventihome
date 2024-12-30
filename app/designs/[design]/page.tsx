@@ -1,3 +1,4 @@
+import Portrait from "@/app/components/portrait/Portrait";
 import Markdown from "react-markdown";
 
 type Props = {
@@ -10,7 +11,7 @@ export default async function Design({ params }: Props) {
 
     return (
         <div className="flex">
-            <img src={`/img/${design}.png`} className="w-52" />
+            <Portrait src={`/img/${design}.png`} />
 
             {response.ok ? (
                 <Markdown>{await response.text()}</Markdown>

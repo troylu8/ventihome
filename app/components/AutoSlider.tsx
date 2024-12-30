@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-let c = 0;
+/** autoscroll resumes `POST_DRAG_PAUSE` millis after dragging ends or slider reaches end */
+const AUTOSCROLL_PAUSE = 2000;
 
 type Props = {
     children: React.ReactNode;
@@ -10,75 +11,74 @@ type Props = {
 export default function AutoSlider({ children }: Props) {
     const sliderRef = useRef<HTMLDivElement | null>(null);
 
-    const sliding = useRef(false);
-    const scrollingUntilRef = useRef(0);
+    const isDragging = useRef(false);
+
+    /** do not autoscroll until this value (a time in millis) has passed  */
+    const draggingUntilRef = useRef(0);
+
+    /** current autoscroll direction: `1` or `-1` */
+    const dir = useRef(1);
+
+    /** position of slider: `0 to 1` */
+    const pos = useRef(0);
+
+    /** id used for cancelAnimationFrame(id) */
+    const animationIdRef = useRef(0);
 
     function handleDragStart() {
         document.body.style.userSelect = "none";
-        sliding.current = true;
+        isDragging.current = true;
     }
     useEffect(() => {
         function handleDragEnd() {
+            if (!isDragging.current) return;
+
             document.body.style.userSelect = "auto";
             dir.current = 1;
-            sliding.current = false;
-            scrollingUntilRef.current = Date.now() + 2000;
+            isDragging.current = false;
+            draggingUntilRef.current = Date.now() + AUTOSCROLL_PAUSE;
         }
         function handleDrag(e: MouseEvent) {
-            if (!sliding.current) return;
+            if (!isDragging.current) return;
             pos.current =
                 sliderRef.current!.scrollLeft /
                 (sliderRef.current!.scrollWidth -
                     sliderRef.current!.clientWidth);
             sliderRef.current?.scrollBy(-e.movementX, 0);
         }
-
         window.addEventListener("mouseup", handleDragEnd);
         window.addEventListener("mousemove", handleDrag);
 
-        return () => {
-            window.removeEventListener("mouseup", handleDragEnd);
-            window.removeEventListener("mousemove", handleDrag);
-        };
-    }, []);
-
-    const dir = useRef(1);
-    const pos = useRef(0);
-    const animationIdRef = useRef(0);
-
-    useEffect(() => {
         cancelAnimationFrame(animationIdRef.current);
-
-        let prevTime = 0;
-
         animationIdRef.current = requestAnimationFrame(scroll);
 
-        scrollingUntilRef.current = Date.now() + 2000;
+        draggingUntilRef.current = Date.now() + AUTOSCROLL_PAUSE;
 
+        let prevTime = 0;
         function scroll(time: number) {
-            if (!sliding.current && Date.now() > scrollingUntilRef.current) {
-                const scrollableWidth =
-                    sliderRef.current!.scrollWidth -
-                    sliderRef.current!.clientWidth;
-
+            if (!isDragging.current && Date.now() > draggingUntilRef.current) {
                 // reverse autoscroll direction if necessary
                 if (
                     (dir.current == 1 && pos.current >= 1) ||
                     (dir.current == -1 && pos.current <= 0)
                 ) {
-                    c = 0;
                     dir.current *= -1;
-                    scrollingUntilRef.current = Date.now() + 2000;
+                    draggingUntilRef.current = Date.now() + AUTOSCROLL_PAUSE;
                 }
 
                 // otherwise, scroll
                 else {
+                    const scrollableWidth =
+                        sliderRef.current?.scrollWidth! -
+                        sliderRef.current?.clientWidth!;
+
                     const speed = 0.05;
                     const delta = time - prevTime;
 
                     pos.current +=
                         dir.current * (speed / scrollableWidth) * delta;
 
+                    // dir.current * speed * delta
                     sliderRef.current?.scrollTo(
                         pos.current * scrollableWidth,
                         0
@@ -90,7 +90,11 @@ export default function AutoSlider({ children }: Props) {
             animationIdRef.current = requestAnimationFrame(scroll);
         }
 
-        return () => cancelAnimationFrame(animationIdRef.current);
+        return () => {
+            cancelAnimationFrame(animationIdRef.current);
+            window.removeEventListener("mouseup", handleDragEnd);
+            window.removeEventListener("mousemove", handleDrag);
+        };
     }, []);
 
     return (

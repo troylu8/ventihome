@@ -2,7 +2,9 @@ import { EnlargableImage } from "../components/EnlargableImage";
 import IconLink from "../components/IconLink";
 
 export default async function Art() {
-    // const response = await fetch("http://localhost:3000/art.json");
+    const srcs: string[] = await (
+        await fetch("http://localhost:3000/art.json")
+    ).json();
 
     return (
         <div className="flex m-5 gap-3">
@@ -13,10 +15,9 @@ export default async function Art() {
             <div className="flex flex-col gap-3 ">
                 <h1> art h1 </h1>
                 <div className="flex flex-wrap gap-3">
-                    <EnlargableImage src="/img/design1.png" />
-                    <EnlargableImage src="/img/design1.png" />
-                    <EnlargableImage src="/img/design1.png" />
-                    <EnlargableImage src="/img/design1.png" />
+                    {srcs.map((src, i) => (
+                        <EnlargableImage key={i} src={`/img/${src}`} />
+                    ))}
                 </div>
             </div>
         </div>

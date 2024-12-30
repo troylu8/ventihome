@@ -2,6 +2,8 @@
 
 import { useAudio } from "./AudioContextProvider";
 
+const filenameWithoutExtensionRegex = /([^\\|\/]+)(?=\.[^.]*$)|([^\\|\/]+$)/;
+
 export default function AudioPlayer() {
     const [audioState, dispatch] = useAudio()!;
 
@@ -28,7 +30,9 @@ export default function AudioPlayer() {
                     <p className="text-xs">
                         {audioState.paused ? "(paused)" : "now playing"}
                     </p>
-                    <p> {audioState.label} </p>
+                    <p>
+                        {filenameWithoutExtensionRegex.exec(audioState.src)![0]}
+                    </p>
                 </div>
             </div>
         </>

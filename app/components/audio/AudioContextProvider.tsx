@@ -4,6 +4,7 @@ import {
     ActionDispatch,
     createContext,
     useContext,
+    useEffect,
     useReducer,
     useRef,
 } from "react";
@@ -11,11 +12,11 @@ import {
 type AudioReducerPair = [AudioState, ActionDispatch<[action: Action]>];
 type AudioState = {
     paused: boolean;
-    label: string;
+    src: string;
 };
 type Action = {
-    type: "play" | "pause" | "edit label";
-    newLabel?: string;
+    type: "play" | "pause" | "edit src";
+    newSrc?: string;
 };
 
 const AudioContext = createContext<AudioReducerPair | null>(null);
@@ -27,36 +28,75 @@ export function useAudio(): AudioReducerPair | null {
 type Props = Readonly<{
     children: React.ReactNode;
     src: string;
-    label: string;
 }>;
 
-export default function AudioContextProvider({ children, src, label }: Props) {
-    const audio = useRef(typeof window === "undefined" ? null : new Audio(src));
+export default function AudioContextProvider({ children }: Props) {
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const srcsRef = useRef<string[]>([]);
+    const currSrcIndexRef = useRef(0);
 
-    const audioReducerPair = useReducer(
-        (prevAudioInfo: AudioState, action: Action) => {
+    useEffect(() => {
+        (async () => {
+            srcsRef.current = (
+                await (await fetch("http://localhost:3000/bgm.json")).json()
+            ).map((filename: string) => "/bgm/" + filename);
+
+            // after retrieving srcs, set audio src to first src.
+            dispatch({
+                type: "edit src",
+                newSrc: srcsRef.current[currSrcIndexRef.current],
+            });
+        })();
+    }, []);
+
+    function handleNextAudio() {
+        currSrcIndexRef.current =
+            (currSrcIndexRef.current + 1) % srcsRef.current.length;
+
+        dispatch({
+            type: "edit src",
+            newSrc: srcsRef.current[currSrcIndexRef.current],
+        });
+    }
+
+    const [audioState, dispatch] = useReducer(
+        (prevAudioState: AudioState, action: Action) => {
             switch (action.type) {
                 case "play": {
-                    audio.current?.play();
-                    return { ...prevAudioInfo, paused: false } as AudioState;
+                    audioRef.current?.play();
+                    return { ...prevAudioState, paused: false } as AudioState;
                 }
                 case "pause": {
-                    audio.current?.pause();
-                    return { ...prevAudioInfo, paused: true } as AudioState;
+                    audioRef.current?.pause();
+                    return { ...prevAudioState, paused: true } as AudioState;
                 }
-                case "edit label": {
+                case "edit src": {
+                    if (!audioRef.current) {
+                        audioRef.current = new Audio(action.newSrc);
+                        audioRef.current.addEventListener(
+                            "ended",
+                            handleNextAudio
+                        );
+                    } else {
+                        if (!audioRef.current.paused) audioRef.current.pause();
+                        audioRef.current.src = action.newSrc!;
+                    }
+
+                    if (!prevAudioState.paused)
+                        audioRef.current?.play().catch(() => {}); // ignore play requests being aborted by pause() or new src
+
                     return {
-                        ...prevAudioInfo,
-                        label: action.newLabel,
+                        ...prevAudioState,
+                        src: action.newSrc,
                     } as AudioState;
                 }
             }
         },
-        { paused: true, label }
+        { paused: true, src: srcsRef.current[0] }
     );
 
     return (
-        <AudioContext.Provider value={audioReducerPair}>
+        <AudioContext.Provider value={[audioState, dispatch]}>
             {children}
         </AudioContext.Provider>
     );
