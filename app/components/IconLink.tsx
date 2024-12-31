@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import ColoredSvg from "./ColoredSvg";
 
 type Props = Readonly<{
     src: string;
@@ -15,17 +16,21 @@ export default function IconLink({ src, label, href }: Props) {
         <Link
             className="
                 flex flex-col items-center justify-center cursor-pointer whitespace-nowrap
-                [&>img]:hover:rotate-12 
+                [&>*:not(p)]:hover:rotate-12 [&>*:not(p)]:transition-transform
             "
             href={href}
         >
-            <Image
-                src={src}
-                alt="icon link"
-                width={32}
-                height={32}
-                className="transition-transform"
-            />
+            {src.endsWith(".svg") ? (
+                <ColoredSvg
+                    src={src}
+                    width={32}
+                    height={32}
+                    color="var(--foreground)"
+                />
+            ) : (
+                <Image src={src} alt="icon link" width={32} height={32} />
+            )}
+
             <p>{label}</p>
         </Link>
     );

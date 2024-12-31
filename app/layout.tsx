@@ -9,13 +9,17 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <body className={`${fredoka.className} antialiased`}>
-                <React.StrictMode>
-                    <AudioContextProvider src="/bgm/talia.mp3">
-                        {children}
-                        <FloatingAudioPlayer />
-                    </AudioContextProvider>
-                </React.StrictMode>
+            <body
+                className={`flex justify-center ${fredoka.className} antialiased`}
+            >
+                <div className="w-[80vw] max-w-[900px]">
+                    <React.StrictMode>
+                        <AudioContextProvider>
+                            {children}
+                            <FloatingAudioPlayer />
+                        </AudioContextProvider>
+                    </React.StrictMode>
+                </div>
             </body>
         </html>
     );

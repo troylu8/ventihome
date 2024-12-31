@@ -1,7 +1,5 @@
 import Portrait from "@/app/components/portrait/Portrait";
-
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import Markdown from "@/app/components/Markdown";
 
 type Props = {
     params: Promise<{ design: string }>;
@@ -9,21 +7,10 @@ type Props = {
 export default async function Design({ params }: Props) {
     const design = (await params)["design"];
 
-    const response = await fetch(`http://localhost:3000/md/${design}.md`);
-
     return (
-        <div className="flex">
+        <div className="flex gap-5">
             <Portrait src={`/img/${design}.png`} />
-
-            {response.ok ? (
-                <div>
-                    <Markdown remarkPlugins={[remarkGfm]}>
-                        {await response.text()}
-                    </Markdown>
-                </div>
-            ) : (
-                <p>{"[no description here]"}</p>
-            )}
+            <Markdown src={`/md/${design}.md`} />
         </div>
     );
 }

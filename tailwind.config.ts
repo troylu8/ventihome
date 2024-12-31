@@ -12,6 +12,7 @@ export default {
                 background: "var(--background)",
                 backgrounddark: "var(--background-dark)",
                 foreground: "var(--foreground)",
+                foregroundlight: "var(--foreground-light)",
                 accent1: "var(--accent1)",
                 accent2: "var(--accent2)",
             },

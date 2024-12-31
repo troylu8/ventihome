@@ -9,7 +9,12 @@ export default function FloatingAudioPlayer() {
     return (
         <>
             {active && (
-                <div className="fixed bottom-2 right-2 p-2 rounded bg-[lightcoral]">
+                <div
+                    className="
+                    fixed bottom-2 right-2 p-2 
+                    rounded-md bg-backgrounddark border-foreground border-4 border-solid
+                "
+                >
                     <AudioPlayer />
                 </div>
             )}

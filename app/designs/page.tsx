@@ -1,5 +1,5 @@
-import React from "react";
+import Markdown from "../components/Markdown";
 
 export default function Designs() {
-    return <div>these are some designs</div>;
+    return <Markdown src="/md/designs_home.md" />;
 }

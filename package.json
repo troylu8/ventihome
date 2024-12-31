@@ -11,6 +11,7 @@
         "then run this": "taskkill /F /PID "
     },
     "dependencies": {
+        "@pyncz/tailwind-mask-image": "^2.0.0",
         "clsx": "^2.1.1",
         "image-size": "^1.2.0",
         "next": "15.1.2",

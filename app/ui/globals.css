@@ -4,6 +4,7 @@
 
 :root {
     --foreground: #378068;
+    --foreground-light: #D6EDE5;
     --accent1: #3B3E86;
     --accent2: #4B3522;
     --background-dark: #ede5d8;
@@ -23,10 +24,6 @@
       @apply text-accent1 no-underline;
     }
 
-    img {
-        @apply max-w-full h-auto
-    }
-
     blockquote,
     h1,
     h2,
@@ -40,5 +37,18 @@
     }
     p {
         @apply m-0
+    }
+
+    
+    ::-webkit-scrollbar {
+        @apply w-2 h-2 
+    }
+    
+    ::-webkit-scrollbar-track {
+        @apply bg-foregroundlight rounded
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-foreground rounded
     }
 }

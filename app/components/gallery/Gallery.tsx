@@ -3,11 +3,12 @@ import { promisify } from "util";
 
 import AutoSlider from "../AutoSlider";
 import Image from "next/image";
+import { readJSON } from "@/lib";
 
 export default async function Gallery() {
-    const srcs: string[] = (
-        await (await fetch("http://localhost:3000/art.json")).json()
-    ).map((src: string) => `/img/${src}`);
+    const srcs: string[] = (await readJSON("/art.json")).map(
+        (src: string) => `/img/${src}`
+    );
 
     const sizeOfAsync = promisify(sizeOf);
 
@@ -29,6 +30,7 @@ export default async function Gallery() {
                         alt={src}
                         width={resultingWidth}
                         height={desiredHeight}
+                        style={{ minWidth: resultingWidth }}
                     />
                 );
             })}

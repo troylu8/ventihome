@@ -1,14 +1,20 @@
-import React from "react";
+import clsx from "clsx";
 
 type Props = Readonly<{
     children: React.ReactNode;
+    className?: string;
     title: string;
 }>;
 
-export default function InfoBoard({ children, title }: Props) {
+export default function InfoBoard({ children, className, title }: Props) {
     return (
         <>
-            <div className="rounded-md bg-backgrounddark p-2 pt-5 relative mt-4 border-foreground border-4 border-solid">
+            <div
+                className={clsx(
+                    "rounded-md bg-backgrounddark p-2 pt-5 relative mt-4 border-foreground border-4 border-solid",
+                    className
+                )}
+            >
                 <header
                     className="
                         absolute bg-foreground p-1 rounded-md text-nowrap text-background
