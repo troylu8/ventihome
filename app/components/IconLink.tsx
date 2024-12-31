@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 type Props = Readonly<{
     src: string;
@@ -18,7 +19,13 @@ export default function IconLink({ src, label, href }: Props) {
             "
             href={href}
         >
-            <img src={src} className="w-8 transition-transform" />
+            <Image
+                src={src}
+                alt="icon link"
+                width={32}
+                height={32}
+                className="transition-transform"
+            />
             <p>{label}</p>
         </Link>
     );

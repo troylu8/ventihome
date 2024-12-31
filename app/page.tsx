@@ -4,13 +4,20 @@ import IconLink from "./components/IconLink";
 import InfoBoard from "./components/InfoBoard";
 import AudioPlayer from "./components/audio/AudioPlayer";
 import AutoSlider from "./components/AutoSlider";
+import Image from "next/image";
+import Gallery from "./components/gallery/Gallery";
 
 export default function App() {
     return (
         <>
             <div className="flex flex-col m-3 gap-3">
                 {/* banner */}
-                <img src="https://picsum.photos/1000/300" />
+                <Image
+                    src="https://picsum.photos/1000/300"
+                    alt="welcome banner"
+                    width={1000}
+                    height={300}
+                />
 
                 {/* center row */}
                 <div className="flex gap-3 ml-auto mr-auto">
@@ -33,7 +40,12 @@ export default function App() {
                     </div>
 
                     <div className="flex flex-col gap-3 ml-5 mr-5 ">
-                        <img src="https://picsum.photos/400/230" />
+                        <Image
+                            src="https://picsum.photos/400/230"
+                            alt="center image"
+                            width={400}
+                            height={230}
+                        />
                         <InfoBoard title="about me">
                             <p> name: cheeeto </p>
                             <p> pronouns: she/her </p>
@@ -66,7 +78,7 @@ export default function App() {
 
                 {/* lower row */}
                 <div className="flex">
-                    <div className="w-[40%]">bio</div>
+                    <div className="min-w-[40vw]">bio</div>
 
                     <div className="flex flex-col gap-3">
                         <InfoBoard title="Notice">
@@ -75,20 +87,7 @@ export default function App() {
                             <p> third item </p>
                         </InfoBoard>
 
-                        <AutoSlider>
-                            <img
-                                src="https://picsum.photos/200/200"
-                                className="max-h-full"
-                            />
-                            <img
-                                src="https://picsum.photos/200/200"
-                                className="max-h-full"
-                            />
-                            <img
-                                src="https://picsum.photos/200/200"
-                                className="max-h-full"
-                            />
-                        </AutoSlider>
+                        <Gallery />
                     </div>
                 </div>
             </div>

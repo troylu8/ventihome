@@ -1,4 +1,4 @@
-import { EnlargableImage } from "../components/EnlargableImage";
+import EnlargableImage from "../components/enlarge/EnlargableImage";
 import IconLink from "../components/IconLink";
 
 export default async function Art() {
@@ -16,7 +16,9 @@ export default async function Art() {
                 <h1> art h1 </h1>
                 <div className="flex flex-wrap gap-3">
                     {srcs.map((src, i) => (
-                        <EnlargableImage key={i} src={`/img/${src}`} />
+                        <div key={i} className={`max-w-[60vw]`}>
+                            <EnlargableImage key={i} src={`/img/${src}`} />
+                        </div>
                     ))}
                 </div>
             </div>

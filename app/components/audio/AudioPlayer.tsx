@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useAudio } from "./AudioContextProvider";
 
 const filenameWithoutExtensionRegex = /([^\\|\/]+)(?=\.[^.]*$)|([^\\|\/]+$)/;
@@ -15,13 +16,16 @@ export default function AudioPlayer() {
         <>
             <div className="flex gap-3">
                 <div className="flex justify-center items-center">
-                    <img
+                    <Image
                         src={
                             audioState.paused
                                 ? "/icons/play.svg"
                                 : "/icons/pause.svg"
                         }
-                        className="w-[40px] h-[40px] cursor-pointer"
+                        alt="bgm play button"
+                        className="cursor-pointer"
+                        width={40}
+                        height={40}
                         onClick={handleTogglePlay}
                     />
                 </div>

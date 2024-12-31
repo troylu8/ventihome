@@ -1,5 +1,7 @@
 import Portrait from "@/app/components/portrait/Portrait";
+
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Props = {
     params: Promise<{ design: string }>;
@@ -14,9 +16,13 @@ export default async function Design({ params }: Props) {
             <Portrait src={`/img/${design}.png`} />
 
             {response.ok ? (
-                <Markdown>{await response.text()}</Markdown>
+                <div>
+                    <Markdown remarkPlugins={[remarkGfm]}>
+                        {await response.text()}
+                    </Markdown>
+                </div>
             ) : (
-                <strong>{"[no description]"}</strong>
+                <p>{"[no description here]"}</p>
             )}
         </div>
     );

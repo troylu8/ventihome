@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground: #378068;
+    --accent1: #3B3E86;
+    --accent2: #4B3522;
+    --background-dark: #ede5d8;
+    --background: #f1fffa;
+}
+
+@layer base {
+    body {
+        @apply bg-background text-foreground
+    }
+
+    p {
+        @apply m-1
+    }
+
+    a {
+      @apply text-accent1 no-underline;
+    }
+
+    img {
+        @apply max-w-full h-auto
+    }
+
+    blockquote,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    pre {
+        @apply m-1 font-medium
+    }
+    p {
+        @apply m-0
+    }
+}

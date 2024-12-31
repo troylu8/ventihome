@@ -12,7 +12,7 @@ export default function SidebarLink({ label, href }: Props) {
     const active = usePathname() == href;
 
     return (
-        <Link href={href} className={clsx({ "font-bold": active })}>
+        <Link href={href} className={clsx({ "font-semibold": active })}>
             <p>{label}</p>
         </Link>
     );
