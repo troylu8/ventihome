@@ -47,6 +47,8 @@ export default function AudioContextProviderClient({ children, srcs }: Props) {
     useEffect(() => {
         audioRef.current?.addEventListener("ended", handleNextAudio);
 
+        audioRef.current!.volume = 0.03;
+
         return () =>
             audioRef.current?.removeEventListener("ended", handleNextAudio);
     }, []);

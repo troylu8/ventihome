@@ -1,6 +1,7 @@
 import { readJSON } from "@/lib";
 import IconLink from "../components/IconLink";
 import SidebarLink from "../components/SidebarLink";
+import PageTitle from "../components/PageTitle";
 
 type Props = {
     children: React.ReactNode;
@@ -10,6 +11,8 @@ export default async function DesignsLayout({ children }: Props) {
 
     return (
         <div className="flex m-5 gap-5">
+            <PageTitle title="cheeeto / designs" />
+
             <div className="flex flex-col ">
                 <IconLink src="/icons/home.svg" label="home" href="/" />
 

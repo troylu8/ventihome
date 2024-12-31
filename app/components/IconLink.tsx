@@ -23,8 +23,8 @@ export default function IconLink({ src, label, href }: Props) {
             {src.endsWith(".svg") ? (
                 <ColoredSvg
                     src={src}
-                    width={32}
-                    height={32}
+                    width={45}
+                    height={45}
                     color="var(--foreground)"
                 />
             ) : (

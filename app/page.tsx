@@ -6,18 +6,22 @@ import AudioPlayer from "./components/audio/AudioPlayer";
 import Image from "next/image";
 import Gallery from "./components/gallery/Gallery";
 import Markdown from "./components/Markdown";
+import PageTitle from "./components/PageTitle";
 
 export default function App() {
     return (
         <>
             <div className="flex flex-col m-3 gap-3">
+                <PageTitle title="cheeeto" />
+
                 {/* banner */}
                 <Image
                     src="/banner.png"
                     alt="welcome banner"
                     width={900}
                     height={0}
-                    className="self-center h-auto"
+                    className="self-center h-auto w-[100%]"
+                    priority
                 />
 
                 {/* center row */}
@@ -34,7 +38,7 @@ export default function App() {
                             href="/"
                         />
                         <IconLink
-                            src="/icons/tiktok.svg"
+                            src="/icons/character.svg"
                             label="designs"
                             href="/designs"
                         />
@@ -47,6 +51,7 @@ export default function App() {
                             width={400}
                             height={0}
                             className="h-auto"
+                            priority
                         />
                         <InfoBoard
                             title="about me"
@@ -83,7 +88,7 @@ export default function App() {
                             href="https://www.tiktok.com/@cheeetopuf"
                         />
                         <IconLink
-                            src="/icons/tiktok.svg"
+                            src="/icons/palette.svg"
                             label="art"
                             href="/art"
                         />
