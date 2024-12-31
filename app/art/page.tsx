@@ -3,9 +3,9 @@ import IconLink from "../components/IconLink";
 import { readJSON } from "../../lib";
 import PageTitle from "../components/PageTitle";
 
-export default async function Art() {
-    const srcs: string[] = await readJSON("/art.json");
+import srcs from "@/public/art.json";
 
+export default async function Art() {
     return (
         <div className="flex m-5 gap-3">
             <PageTitle title="cheeeto / art" />
