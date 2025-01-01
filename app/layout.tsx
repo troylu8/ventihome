@@ -10,7 +10,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`flex justify-center ${fredoka.className} antialiased`}
+                className={`flex justify-center overflow-y-scroll ${fredoka.className} antialiased`}
             >
                 <div className="w-[80vw] max-w-[900px]">
                     <React.StrictMode>

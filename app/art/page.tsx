@@ -1,11 +1,10 @@
 import EnlargableImage from "../components/enlarge/EnlargableImage";
 import IconLink from "../components/IconLink";
-import { readJSON } from "../../lib";
 import PageTitle from "../components/PageTitle";
 
 import srcs from "@/public/art.json";
 
-export default async function Art() {
+export default function Art() {
     return (
         <div className="flex m-5 gap-3">
             <PageTitle title="cheeeto / art" />

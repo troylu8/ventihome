@@ -1,14 +1,13 @@
-import { readJSON } from "@/lib";
 import IconLink from "../components/IconLink";
 import SidebarLink from "../components/SidebarLink";
 import PageTitle from "../components/PageTitle";
 
+import designs from "@/public/designs.json";
+
 type Props = {
     children: React.ReactNode;
 };
-export default async function DesignsLayout({ children }: Props) {
-    const designs: string[] = await readJSON("/designs.json");
-
+export default function DesignsLayout({ children }: Props) {
     return (
         <div className="flex m-5 gap-5">
             <PageTitle title="cheeeto / designs" />

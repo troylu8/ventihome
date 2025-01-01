@@ -1,6 +1,6 @@
+import { readText } from "@/lib";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { readText } from "../../lib";
 
 type Props = {
     src: string;

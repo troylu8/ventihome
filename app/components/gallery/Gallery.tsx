@@ -3,20 +3,17 @@ import { promisify } from "util";
 
 import AutoSlider from "../AutoSlider";
 import Image from "next/image";
-import { readJSON } from "@/lib";
+
+import filenames from "@/public/art.json";
 
 export default async function Gallery() {
-    const srcs: string[] = (await readJSON("/art.json")).map(
-        (src: string) => `/img/${src}`
-    );
-
     const sizeOfAsync = promisify(sizeOf);
 
     return (
         <AutoSlider>
-            {srcs.map(async (src, i) => {
+            {filenames.map(async (filename, i) => {
                 const imgSize = await sizeOfAsync(
-                    `${process.cwd()}/public/${src}`
+                    `${process.cwd()}/public/img/${filename}`
                 );
 
                 const desiredHeight = 300;
@@ -26,8 +23,8 @@ export default async function Gallery() {
                 return (
                     <Image
                         key={i}
-                        src={src}
-                        alt={src}
+                        src={`/img/${filename}`}
+                        alt={filename}
                         width={resultingWidth}
                         height={desiredHeight}
                         style={{ minWidth: resultingWidth }}
