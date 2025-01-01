@@ -7,6 +7,7 @@ import Image from "next/image";
 import Gallery from "./components/gallery/Gallery";
 import Markdown from "./components/Markdown";
 import PageTitle from "./components/PageTitle";
+import ClickToCopy from "./components/ClickToCopy";
 
 export default function App() {
     return (
@@ -32,11 +33,13 @@ export default function App() {
                             label="insta"
                             href="https://www.instagram.com/cheeetopuf"
                         />
-                        <IconLink
-                            src="/icons/discord.svg"
-                            label="discord"
-                            href="/"
-                        />
+                        <ClickToCopy value="fiuu_">
+                            <IconLink
+                                src="/icons/discord.svg"
+                                label="discord"
+                                href="/"
+                            />
+                        </ClickToCopy>
                         <IconLink
                             src="/icons/character.svg"
                             label="designs"
