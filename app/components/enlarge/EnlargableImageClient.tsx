@@ -25,15 +25,15 @@ export default function EnlargableImageClient({ src, width, height }: Props) {
             {enlarged && (
                 <div
                     className={`
-                        fixed top-0 bottom-0 left-0 right-0
-                        bg-[#26282Ab0] z-99 
+                        fixed top-0 bottom-0 left-0 right-0 z-99
                     `}
                     onClick={() => setEnlarged(false)}
                 >
+                    <div className="fixed top-0 bottom-0 left-0 right-0 bg-background3 opacity-75 brightness-[20%]"></div>
                     <div
                         className={`
                         fixed top-[5%] bottom-[5%] left-[5%] right-[5%] 
-                        flex items-center justify-center
+                        flex items-center justify-center 
                     `}
                     >
                         <Image
