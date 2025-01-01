@@ -1,12 +1,12 @@
 import sizeOf from "image-size";
 import { promisify } from "util";
 
-import AutoSlider from "../AutoSlider";
+import AutoSlider from "./AutoSlider";
 import Image from "next/image";
 
 import filenames from "@/public/art.json";
 
-export default async function Gallery() {
+export default async function ImageSlider() {
     const sizeOfAsync = promisify(sizeOf);
 
     return (

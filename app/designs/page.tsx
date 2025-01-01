@@ -1,5 +1,7 @@
-import Markdown from "../components/Markdown";
+import Gallery from "../components/Gallery";
+
+import designs from "@/public/designs.json";
 
 export default function Designs() {
-    return <Markdown src="/md/designs_home.md" />;
+    return <Gallery srcs={designs.map((design) => `/img/${design}.png`)} />;
 }

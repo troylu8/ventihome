@@ -21,8 +21,8 @@ export default function ClickToCopy({ value, children }: Props) {
         >
             <p
                 className="
-            absolute right-full top-0 invisible group-hover:visible
-            rounded-md bg-backgrounddark p-1 border-foreground border-2 border-solid mr-2
+            absolute right-full top-0 invisible group-hover:visible translate-y-[50%]
+            rounded-md bg-background2 p-1 border-foreground border-2 border-solid mr-2
             "
             >
                 {text}

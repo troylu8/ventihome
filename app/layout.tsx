@@ -1,8 +1,8 @@
-import "./ui/globals.css";
+import "./globals.css";
 import AudioContextProvider from "./components/audio/AudioContextProvider";
 import FloatingAudioPlayer from "./components/audio/FloatingAudioPlayer";
 import React from "react";
-import { fredoka } from "./ui/fonts";
+import { fredoka } from "./fonts";
 
 export default function RootLayout({
     children,
@@ -12,7 +12,7 @@ export default function RootLayout({
             <body
                 className={`flex justify-center overflow-y-scroll ${fredoka.className} antialiased`}
             >
-                <div className="w-[80vw] max-w-[900px]">
+                <div className="w-[80vw] max-w-[750px]">
                     <React.StrictMode>
                         <AudioContextProvider>
                             {children}

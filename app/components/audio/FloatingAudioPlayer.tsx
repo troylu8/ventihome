@@ -12,7 +12,7 @@ export default function FloatingAudioPlayer() {
                 <div
                     className="
                     fixed bottom-2 right-2 p-2 
-                    rounded-md bg-backgrounddark border-foreground border-4 border-solid
+                    rounded-md bg-background2 border-foreground border-4 border-solid
                 "
                 >
                     <AudioPlayer />

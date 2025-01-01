@@ -4,24 +4,23 @@
 
 :root {
     --foreground: #378068;
-    --foreground-light: #D6EDE5;
-    --accent1: #3B3E86;
-    --accent2: #4B3522;
-    --background-dark: #ede5d8;
-    --background: #f1fffa;
+    --accent: #2f339a;
+    --background1: #f1fffa;
+    --background2: #ede5d8;
+    --background3: #D6EDE5;
 }
 
 @layer base {
     body {
-        @apply bg-background text-foreground
+        @apply bg-background1 text-foreground
     }
 
     p {
         @apply m-1
     }
 
-    a {
-      @apply text-accent1 no-underline;
+    a, code {
+      @apply text-accent no-underline;
     }
 
     blockquote,
@@ -45,7 +44,7 @@
     }
     
     ::-webkit-scrollbar-track {
-        @apply bg-foregroundlight rounded
+        @apply bg-background3 rounded
     }
 
     ::-webkit-scrollbar-thumb {

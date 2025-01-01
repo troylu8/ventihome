@@ -4,7 +4,7 @@ import IconLink from "./components/IconLink";
 import InfoBoard from "./components/InfoBoard";
 import AudioPlayer from "./components/audio/AudioPlayer";
 import Image from "next/image";
-import Gallery from "./components/gallery/Gallery";
+import ImageSlider from "./components/slider/ImageSlider";
 import Markdown from "./components/Markdown";
 import PageTitle from "./components/PageTitle";
 import ClickToCopy from "./components/ClickToCopy";
@@ -105,13 +105,11 @@ export default function App() {
                     </div>
 
                     <div className="flex flex-col gap-3 max-w-[55%]">
-                        <InfoBoard title="Notice">
-                            <p> something </p>
-                            <p> else </p>
-                            <p> third item </p>
+                        <InfoBoard title="notice">
+                            <Markdown src="/md/notice.md" />
                         </InfoBoard>
 
-                        <Gallery />
+                        <ImageSlider />
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import EnlargableImage from "../components/enlarge/EnlargableImage";
+import Gallery from "../components/Gallery";
 import IconLink from "../components/IconLink";
 import PageTitle from "../components/PageTitle";
 
@@ -15,13 +16,7 @@ export default function Art() {
 
             <div className="flex flex-col gap-3 ">
                 <h1> art </h1>
-                <div className="flex flex-wrap gap-3">
-                    {srcs.map((src, i) => (
-                        <div key={i} className={`max-w-[60vw]`}>
-                            <EnlargableImage key={i} src={`/img/${src}`} />
-                        </div>
-                    ))}
-                </div>
+                <Gallery srcs={srcs.map((src) => `/img/${src}`)} />
             </div>
         </div>
     );

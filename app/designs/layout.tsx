@@ -12,10 +12,12 @@ export default function DesignsLayout({ children }: Props) {
         <div className="flex m-5 gap-5">
             <PageTitle title="cheeeto / designs" />
 
-            <div className="flex flex-col ">
+            <div className="flex flex-col whitespace-nowrap gap-5 ">
                 <IconLink src="/icons/home.svg" label="home" href="/" />
 
-                <div className="flex flex-col mt-5 items-end gap-1">
+                <SidebarLink label="[all designs]" href="/designs" />
+
+                <div className="flex flex-col items-end gap-1">
                     {designs.map((design, i) => (
                         <SidebarLink
                             key={i}
