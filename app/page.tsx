@@ -33,7 +33,7 @@ export default function App() {
                             label="insta"
                             href="https://www.instagram.com/cheeetopuf"
                         />
-                        <ClickToCopy value="Cheeetopuffs">
+                        <ClickToCopy value="cheeetopuffs">
                             <IconLink
                                 src="/icons/discord.svg"
                                 label="discord"
