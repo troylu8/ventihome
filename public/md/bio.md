@@ -1,7 +1,3 @@
-this is my bio
+### Hello!! (^・ω・^ )
 
-## supports markdown!
-
-*italic* **bold** ~~strikethrough~~
-
-edit `md/bio.md` to edit me
+have a good day
