@@ -17,7 +17,7 @@ export default function App() {
 
                 {/* banner */}
                 <Image
-                    src="/banner.png"
+                    src="/welcomebanner.png"
                     alt="welcome banner"
                     width={900}
                     height={0}
