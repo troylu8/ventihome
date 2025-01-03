@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-    --foreground: #378068;
-    --accent: #2f339a;
-    --background1: #f1fffa;
-    --background2: #ede5d8;
+    --foreground: #ff9bc2;
+    --accent: #ff9bc2;
+    --background1: #ffffff;
+    --background2: #ffffff;
     --background3: #D6EDE5;
 }
 
