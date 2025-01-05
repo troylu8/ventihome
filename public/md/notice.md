@@ -1,6 +1,4 @@
-⚠️ notice!! an important message for you ⚠️
+## ⚠️ a few things to note: ⚠️
 
-* bullet point 1
-* bullet point 2
-
-don't miss out!!! (edit me via `md/notice.md`)
+* this website is still a wip so please ignore it it anything weird happens (＞人＜ ;) -- (it also looks uncool on mobile at the moment)
+* (something important)
