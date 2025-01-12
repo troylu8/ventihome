@@ -12,7 +12,10 @@ import ClickToCopy from "./components/ClickToCopy";
 export default function App() {
     return (
         <>
-            <div className="flex flex-col m-3 gap-3">
+            <div
+                className="flex flex-col m-3 gap-3"
+                style={{ WebkitTapHighlightColor: "transparent" }}
+            >
                 <PageTitle title="cheeeto" />
 
                 {/* banner */}
