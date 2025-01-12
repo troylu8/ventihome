@@ -9,7 +9,7 @@ type Props = {
 };
 export default function DesignsLayout({ children }: Props) {
     return (
-        <div className="flex m-3 gap-2 sm:gap-5">
+        <div className="flex m-3 gap-2 sm:gap-5 mb-[80px]">
             <PageTitle title="cheeeto / designs" />
 
             <div className="flex flex-col whitespace-nowrap gap-5 ">

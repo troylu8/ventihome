@@ -8,7 +8,7 @@ export default function Gallery({ srcs }: Props) {
     return (
         <div
             className="
-        flex gap-3 mb-[50px]
+        flex gap-3
         flex-col align-center
         max-w-[400px] self-center
         sm:self-start sm:flex-row sm:flex-wrap"

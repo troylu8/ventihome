@@ -10,15 +10,13 @@ export default async function Markdown({ src }: Props) {
 
     return (
         <div className="flex flex-col gap-2">
-            {text ? (
+            {text && (
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     className="[&_a]:underline"
                 >
                     {text}
                 </ReactMarkdown>
-            ) : (
-                <p>{"[nothing here] " + src}</p>
             )}
         </div>
     );

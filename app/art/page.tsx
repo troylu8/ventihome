@@ -6,7 +6,7 @@ import srcs from "@/public/art.json";
 
 export default function Art() {
     return (
-        <div className="flex m-5 gap-3 justify-center">
+        <div className="flex m-5 gap-3 justify-center mb-[80px]">
             <PageTitle title="cheeeto / art" />
 
             <div className="hidden sm:flex flex-col">
