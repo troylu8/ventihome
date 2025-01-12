@@ -15,7 +15,7 @@ export default function Portrait({ src }: Props) {
             width={PORTRAIT_WIDTH}
             height={0}
             style={{ animation: "slideIn 250ms ease-out" }}
-            className={`w-[${PORTRAIT_WIDTH}px] h-auto object-contain self-start`}
+            className={`max-w-full h-auto object-contain self-start`}
             priority
         />
     );

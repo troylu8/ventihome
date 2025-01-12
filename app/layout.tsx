@@ -9,10 +9,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
+            <head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+            </head>
             <body
                 className={`flex justify-center overflow-y-scroll ${fredoka.className} antialiased`}
             >
-                <div className="w-[80vw] max-w-[750px]">
+                <div className="w-full max-w-[750px] ">
                     <React.StrictMode>
                         <AudioContextProvider>
                             {children}

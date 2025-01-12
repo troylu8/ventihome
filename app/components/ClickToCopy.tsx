@@ -15,14 +15,19 @@ export default function ClickToCopy({ value, children }: Props) {
             onClickCapture={(e) => {
                 e.preventDefault();
                 navigator.clipboard.writeText(value);
-                setText("copied!");
+                setText(value + " (copied!)");
             }}
             onMouseLeave={() => setText(value)}
         >
             <p
                 className="
-            absolute right-full top-0 invisible group-hover:visible translate-y-[50%]
+            absolute 
+            max-lg:bottom-full max-lg:left-[50%] max-lg:translate-x-[-50%]
+            lg:right-full lg:top-[50%] lg:translate-y-[-50%] 
+
+            invisible group-hover:visible
             rounded-md bg-background2 p-1 border-foreground border-2 border-solid mr-2
+            text-center
             "
             >
                 {text}

@@ -8,10 +8,11 @@ type Props = {
     params: Promise<{ design: string }>;
 };
 export default async function Design({ params }: Props) {
-    const { design } = await params;
+    let { design } = await params;
+    design = decodeURIComponent(design);
 
     return (
-        <div className="flex gap-5">
+        <div className="flex gap-5 flex-col sm:flex-row ">
             {designs.includes(design) ? (
                 <>
                     <Portrait src={`/img/${design}.png`} />
@@ -25,5 +26,7 @@ export default async function Design({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-    return designs.map((design: string) => ({ design }));
+    return designs.map((design: string) => ({
+        design: decodeURIComponent(design),
+    }));
 }

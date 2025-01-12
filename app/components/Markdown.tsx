@@ -11,7 +11,10 @@ export default async function Markdown({ src }: Props) {
     return (
         <div className="flex flex-col gap-2">
             {text ? (
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    className="[&_a]:underline"
+                >
                     {text}
                 </ReactMarkdown>
             ) : (

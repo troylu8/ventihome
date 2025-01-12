@@ -19,7 +19,9 @@ export default function EnlargableImageClient({ src, width, height }: Props) {
                 width={width}
                 height={height}
                 onClick={() => setEnlarged(true)}
-                className={`hover:scale-[103%] transition-transform max-h-[50vh] w-auto `}
+                className="hover:scale-[103%] transition-transform 
+                sm:max-h-[50vw]
+                max-w-full w-auto h-auto"
             />
 
             {enlarged && (

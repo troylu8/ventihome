@@ -17,6 +17,7 @@ export default function IconLink({ src, label, href }: Props) {
             className="
                 flex flex-col items-center justify-center cursor-pointer whitespace-nowrap
                 [&>*:not(p)]:hover:rotate-12 [&>*:not(p)]:transition-transform
+                min-w-[75px]
             "
             href={href}
         >
