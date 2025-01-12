@@ -7,8 +7,9 @@ const AUTOSCROLL_PAUSE = 2000;
 
 type Props = {
     children: React.ReactNode;
+    device?: string;
 };
-export default function AutoSlider({ children }: Props) {
+export default function AutoSlider({ children, device }: Props) {
     const sliderRef = useRef<HTMLDivElement | null>(null);
 
     const isDragging = useRef(false);
@@ -31,17 +32,17 @@ export default function AutoSlider({ children }: Props) {
             | React.MouseEvent<HTMLDivElement>
             | React.TouchEvent<HTMLDivElement>
     ) {
-        return (
-            (e as MouseEvent).clientX ??
-            (e as TouchEvent).changedTouches[0].clientX
-        );
+        return (e as MouseEvent).clientX;
     }
     function handleDragStart(
         e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
     ) {
+        isDragging.current = true;
+
+        if (device === "mobile") return;
+
         prevTouchPos.current = getTouchPos(e);
         document.body.style.userSelect = "none";
-        isDragging.current = true;
     }
     useEffect(() => {
         /** position of slider: `0 to 1` */
@@ -61,6 +62,7 @@ export default function AutoSlider({ children }: Props) {
             draggingUntilRef.current = Date.now() + AUTOSCROLL_PAUSE;
         }
         function handleDrag(e: MouseEvent | TouchEvent) {
+            if (device === "mobile") return;
             if (!isDragging.current) return;
 
             const touchPos = getTouchPos(e);

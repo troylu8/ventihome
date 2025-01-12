@@ -1,16 +1,16 @@
 import sizeOf from "image-size";
 import { promisify } from "util";
 
-import AutoSlider from "./AutoSlider";
 import Image from "next/image";
 
 import filenames from "@/public/art.json";
+import AutoSliderParent from "./AutoSliderParent";
 
 export default async function ImageSlider() {
     const sizeOfAsync = promisify(sizeOf);
 
     return (
-        <AutoSlider>
+        <AutoSliderParent>
             {filenames.map(async (filename, i) => {
                 const imgSize = await sizeOfAsync(
                     `${process.cwd()}/public/img/${filename}`
@@ -31,6 +31,6 @@ export default async function ImageSlider() {
                     />
                 );
             })}
-        </AutoSlider>
+        </AutoSliderParent>
     );
 }
