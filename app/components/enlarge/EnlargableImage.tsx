@@ -1,13 +1,16 @@
 import sizeOf from "image-size";
 import { promisify } from "util";
 import EnlargableImageClient from "./EnlargableImageClient";
+import path from "path";
 
 type Props = {
     src: string;
 };
 export default async function EnlargableImage({ src }: Props) {
     const sizeOfAsync = promisify(sizeOf);
-    const imgSize = await sizeOfAsync(`${process.cwd()}/public/${src}`);
+    const imgSize = await sizeOfAsync(
+        path.join(process.cwd(), `/public/${src}`)
+    );
 
     return (
         <EnlargableImageClient
