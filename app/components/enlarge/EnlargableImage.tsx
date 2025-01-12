@@ -8,9 +8,7 @@ type Props = {
 };
 export default async function EnlargableImage({ src }: Props) {
     const sizeOfAsync = promisify(sizeOf);
-    const imgSize = await sizeOfAsync(
-        path.join(process.cwd(), `/public/${src}`)
-    );
+    const imgSize = await sizeOfAsync(path.join("./public", src));
 
     return (
         <EnlargableImageClient

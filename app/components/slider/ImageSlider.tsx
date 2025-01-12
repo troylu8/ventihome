@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import filenames from "@/public/art.json";
 import AutoSliderParent from "./AutoSliderParent";
+import path from "path";
 
 export default async function ImageSlider() {
     const sizeOfAsync = promisify(sizeOf);
@@ -13,7 +14,7 @@ export default async function ImageSlider() {
         <AutoSliderParent>
             {filenames.map(async (filename, i) => {
                 const imgSize = await sizeOfAsync(
-                    `${process.cwd()}/public/img/${filename}`
+                    path.join(process.cwd(), "public/img", filename)
                 );
 
                 const desiredHeight = 300;
