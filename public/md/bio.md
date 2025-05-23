@@ -7,10 +7,10 @@ have a good day
 # Commissions Open! 
 DM me if interested, but please read everything listed below first (˵ •̀ ᴗ - ˵ ) ✧ 
 
-:white_check_mark: Will Draw --------------
+Will Draw --------------
 - OCs, ship art, light gore 
 
-:x: Wont Draw/Limitations ------------
+Wont Draw/Limitations ------------
 - NSFW, heavy gore, furries, mechs 
 
 ### Prices (USD) --------------
